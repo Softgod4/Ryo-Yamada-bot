@@ -1,11 +1,11 @@
 import { Telegraf, Context } from "telegraf";
 import { setBotCommands } from "./commandsList.js";
-import { text } from "./text.js";
+import { text } from "./inputData.js";
 import { getPicture } from "./request.js";
 import { selectPicsSFW, selectPicsNSFW } from "./selectPics.js";
 import dotenv from 'dotenv';
 import { message } from "telegraf/filters";
-import { stickerAnswer, randomTextAnswer } from "./answerCommand.js";
+import { stickerAnswer, textAnswer } from "./answerCommand.js";
 
 dotenv.config();
 
@@ -57,7 +57,7 @@ class Bot {
   }
 
   private async handleAnswerCommand(ctx: Context): Promise<void>{
-    console.log('')
+    
   }
 
   public launch(): void {
