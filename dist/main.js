@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { Telegraf } from "telegraf";
-import { setBotCommands } from "./commands.js";
+import { setBotCommands } from "./commandsList.js";
 import { text } from "./text.js";
 import { getPicture } from "./request.js";
 import { selectPicsSFW, selectPicsNSFW } from "./selectPics.js";
@@ -61,7 +61,6 @@ class Bot {
     }
     handleAnswerCommand(ctx) {
         return __awaiter(this, void 0, void 0, function* () {
-            ctx.reply('Какой красивый стикер!');
         });
     }
     launch() {

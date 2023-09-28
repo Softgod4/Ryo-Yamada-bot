@@ -5,6 +5,7 @@ import { getPicture } from "./request.js";
 import { selectPicsSFW, selectPicsNSFW } from "./selectPics.js";
 import dotenv from 'dotenv';
 import { message } from "telegraf/filters";
+import { stickerAnswer, randomTextAnswer } from "./answerCommand.js";
 
 dotenv.config();
 
