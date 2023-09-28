@@ -57,7 +57,7 @@ class Bot {
   }
 
   private async handleAnswerCommand(ctx: Context): Promise<void>{
-    
+    console.log('')
   }
 
   public launch(): void {
