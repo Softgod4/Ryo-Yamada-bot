@@ -1,4 +1,5 @@
 # Ryo-Yamada-bot
+![lovely-chan](img/readme.jpg)
 
 Ryo Yamada Bot is a Telegram bot designed to provide a variety of 
 functionalities, including sending both **NSFW** (Not Safe for Work) 
