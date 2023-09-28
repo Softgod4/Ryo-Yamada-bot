@@ -13,6 +13,7 @@ import { text } from "./text.js";
 import { getPicture } from "./request.js";
 import { selectPicsSFW, selectPicsNSFW } from "./selectPics.js";
 import dotenv from 'dotenv';
+import { message } from "telegraf/filters";
 dotenv.config();
 class Bot {
     constructor() {
@@ -27,6 +28,7 @@ class Bot {
         this.bot.command('help', this.handleHelpCommand.bind(this));
         this.bot.command('sfw', this.handleSFWCommand.bind(this));
         this.bot.command('nsfw', this.handleNSFWCommand.bind(this));
+        this.bot.on(message('sticker'), this.handleAnswerCommand.bind(this));
     }
     handleHelpCommand(ctx) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -55,6 +57,11 @@ class Bot {
             catch (error) {
                 console.log(error);
             }
+        });
+    }
+    handleAnswerCommand(ctx) {
+        return __awaiter(this, void 0, void 0, function* () {
+            ctx.reply('Какой красивый стикер!');
         });
     }
     launch() {

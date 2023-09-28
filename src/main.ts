@@ -1,9 +1,10 @@
 import { Telegraf, Context } from "telegraf";
-import { setBotCommands } from "./commands.js";
+import { setBotCommands } from "./commandsList.js";
 import { text } from "./text.js";
 import { getPicture } from "./request.js";
 import { selectPicsSFW, selectPicsNSFW } from "./selectPics.js";
 import dotenv from 'dotenv';
+import { message } from "telegraf/filters";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ class Bot {
     this.bot.command('help', this.handleHelpCommand.bind(this));
     this.bot.command('sfw', this.handleSFWCommand.bind(this));
     this.bot.command('nsfw', this.handleNSFWCommand.bind(this));
+    this.bot.on(message('sticker'), this.handleAnswerCommand.bind(this))
   }
 
   private async handleHelpCommand(ctx: Context): Promise<void> {
@@ -51,6 +53,10 @@ class Bot {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  private async handleAnswerCommand(ctx: Context): Promise<void>{
+    
   }
 
   public launch(): void {
