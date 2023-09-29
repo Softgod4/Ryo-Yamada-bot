@@ -5,7 +5,7 @@ import { getPicture } from "./request.js";
 import { selectPicsSFW, selectPicsNSFW } from "./selectPics.js";
 import dotenv from 'dotenv';
 import { message } from "telegraf/filters";
-import { stickerAnswer, textAnswer } from "./answerCommand.js";
+import { textAnswer } from "./answerCommand.js";
 
 dotenv.config();
 
@@ -41,8 +41,10 @@ class Bot {
       const data = await getPicture(selectPicsSFW(), true);
       const picture: string = data.url;
       await ctx.replyWithPhoto({ url: picture });
-    } catch (error) {
-      console.log(error);
+    } catch (error: unknown) {
+      if (typeof error === 'string') {
+        ctx.sendMessage(error)
+      }
     }
   }
 
@@ -51,13 +53,22 @@ class Bot {
       const data = await getPicture(selectPicsNSFW(), false);
       const picture: string = data.url;
       await ctx.replyWithPhoto({ url: picture });
-    } catch (error) {
-      console.log(error);
+    } catch (error: unknown) {
+      if (typeof error === 'string') {
+        ctx.sendMessage(error)
+      }
     }
   }
 
   private async handleAnswerCommand(ctx: Context): Promise<void>{
-    
+    try {
+      (Math.random() > 0.7) ? await ctx.replyWithVideo(
+      { source: 'img/like.gif' },
+      { caption: textAnswer()}
+      ) : (() => {})
+    } catch(err) {
+      console.log(err)
+    }
   }
 
   public launch(): void {

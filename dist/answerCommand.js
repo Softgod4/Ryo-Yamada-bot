@@ -1,9 +1,9 @@
-import { answerText, stickerId } from "./inputData.js";
-export function stickerAnswer() {
-    const sticker = stickerId[1];
-    return sticker;
-}
+import { answerText } from "./inputData.js";
+export const randomValueFromObject = (obj) => {
+    let rand = Math.floor(Math.random() * Object.keys(obj).length);
+    return rand;
+};
 export function textAnswer() {
-    const textAnswer = answerText[1];
+    const textAnswer = answerText[randomValueFromObject(answerText)];
     return textAnswer;
 }

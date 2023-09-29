@@ -1,11 +1,12 @@
-import { answerText, stickerId } from "./inputData.js";
+import { InputFile } from "telegraf/types";
+import { answerText } from "./inputData.js";
 
-export function stickerAnswer(): string {
-    const sticker = stickerId[1];
-    return sticker;
+export const randomValueFromObject = (obj: { [key: string | number]: string }) => {
+    let rand = Math.floor(Math.random() * Object.keys(obj).length)
+    return rand
 }
 
 export function textAnswer(): string {
-    const textAnswer = answerText[1];
+    const textAnswer = answerText[randomValueFromObject(answerText)];
     return textAnswer;
-}
+  }

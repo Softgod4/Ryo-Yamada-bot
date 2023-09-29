@@ -14,7 +14,7 @@ import { getPicture } from "./request.js";
 import { selectPicsSFW, selectPicsNSFW } from "./selectPics.js";
 import dotenv from 'dotenv';
 import { message } from "telegraf/filters";
-import { stickerAnswer, textAnswer } from "./answerCommand.js";
+import { textAnswer } from "./answerCommand.js";
 dotenv.config();
 class Bot {
     constructor() {
@@ -44,7 +44,9 @@ class Bot {
                 yield ctx.replyWithPhoto({ url: picture });
             }
             catch (error) {
-                console.log(error);
+                if (typeof error === 'string') {
+                    ctx.sendMessage(error);
+                }
             }
         });
     }
@@ -56,16 +58,19 @@ class Bot {
                 yield ctx.replyWithPhoto({ url: picture });
             }
             catch (error) {
-                console.log(error);
+                if (typeof error === 'string') {
+                    ctx.sendMessage(error);
+                }
             }
         });
     }
     handleAnswerCommand(ctx) {
         return __awaiter(this, void 0, void 0, function* () {
-            let rand = Math.floor(Math.random()) * 10;
-            if (rand >= 8) {
-                ctx.sendSticker(stickerAnswer());
-                ctx.sendMessage(textAnswer());
+            try {
+                (Math.random() > 0.7) ? yield ctx.replyWithVideo({ source: 'img/like.gif' }, { caption: textAnswer() }) : (() => { });
+            }
+            catch (err) {
+                console.log(err);
             }
         });
     }
