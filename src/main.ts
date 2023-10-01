@@ -6,6 +6,7 @@ import { selectPicsSFW, selectPicsNSFW } from "./selectPics.js";
 import dotenv from 'dotenv';
 import { message } from "telegraf/filters";
 import { textAnswer } from "./answerCommand.js";
+import { respect } from "./respect.js";
 
 dotenv.config();
 
@@ -74,7 +75,11 @@ class Bot {
 
   private async handleRespectCommand(ctx: Context): Promise<void>{
     try {
-      ctx.reply('Уважение оказоно')
+      let message = ctx.message;
+      ctx.replyWithVideo(
+        { source: "img/respect.gif" },
+        { caption: `Уважение оказано @${message?.from.username}`}
+      )
     } catch {
       (() => {})
     }
@@ -82,6 +87,8 @@ class Bot {
 
   public launch(): void {
     this.bot.launch();
+    process.once('SIGINT', () => this.bot.stop('SIGINT'))
+    process.once('SIGTERM', () => this.bot.stop('SIGTERM'))
   }
 }
 

@@ -30,6 +30,7 @@ class Bot {
         this.bot.command('sfw', this.handleSFWCommand.bind(this));
         this.bot.command('nsfw', this.handleNSFWCommand.bind(this));
         this.bot.on(message('sticker'), this.handleAnswerCommand.bind(this));
+        this.bot.hears('+', this.handleRespectCommand.bind(this));
     }
     handleHelpCommand(ctx) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -74,8 +75,21 @@ class Bot {
             }
         });
     }
+    handleRespectCommand(ctx) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let message = ctx.message;
+                ctx.replyWithVideo({ source: "img/respect.gif" }, { caption: `Уважение оказано @${message === null || message === void 0 ? void 0 : message.from.username}` });
+            }
+            catch (_a) {
+                (() => { });
+            }
+        });
+    }
     launch() {
         this.bot.launch();
+        process.once('SIGINT', () => this.bot.stop('SIGINT'));
+        process.once('SIGTERM', () => this.bot.stop('SIGTERM'));
     }
 }
 const bot = new Bot();
