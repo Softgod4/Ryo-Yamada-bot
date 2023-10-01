@@ -27,6 +27,7 @@ class Bot {
     this.bot.command('sfw', this.handleSFWCommand.bind(this));
     this.bot.command('nsfw', this.handleNSFWCommand.bind(this));
     this.bot.on(message('sticker'), this.handleAnswerCommand.bind(this))
+    this.bot.hears('+', this.handleRespectCommand.bind(this))
   }
 
   private async handleHelpCommand(ctx: Context): Promise<void> {
@@ -68,6 +69,14 @@ class Bot {
       ) : (() => {})
     } catch(err) {
       console.log(err)
+    }
+  }
+
+  private async handleRespectCommand(ctx: Context): Promise<void>{
+    try {
+      ctx.reply('Уважение оказоно')
+    } catch {
+      (() => {})
     }
   }
 
