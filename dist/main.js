@@ -81,7 +81,6 @@ class Bot {
             try {
                 let message = ctx.message;
                 ctx.replyWithVideo({ source: "img/respect.gif" }, { caption: `Уважение оказано @${message === null || message === void 0 ? void 0 : message.from.username}` });
-                ConnectDatabase();
             }
             catch (_a) {
                 (() => { });
@@ -95,4 +94,5 @@ class Bot {
     }
 }
 const bot = new Bot();
+ConnectDatabase();
 bot.launch();
