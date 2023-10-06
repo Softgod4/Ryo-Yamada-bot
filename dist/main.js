@@ -15,6 +15,7 @@ import { selectPicsSFW, selectPicsNSFW } from "./selectPics.js";
 import dotenv from 'dotenv';
 import { message } from "telegraf/filters";
 import { textAnswer } from "./answerCommand.js";
+import { ConnectDatabase } from "./mongodb.js";
 dotenv.config();
 class Bot {
     constructor() {
@@ -80,6 +81,7 @@ class Bot {
             try {
                 let message = ctx.message;
                 ctx.replyWithVideo({ source: "img/respect.gif" }, { caption: `Уважение оказано @${message === null || message === void 0 ? void 0 : message.from.username}` });
+                ConnectDatabase();
             }
             catch (_a) {
                 (() => { });

@@ -23,8 +23,7 @@
   "dependencies": {
     "@types/node": "^20.7.0",
     "dotenv": "^16.3.1",
-    "firebase": "^10.4.0",
-    "firebase-tools": "^12.6.2",
+    "mongodb": "^6.1.0",
     "node-fetch": "^3.3.2",
     "telegraf": "^4.14.0"
   }

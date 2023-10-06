@@ -6,7 +6,7 @@ import { selectPicsSFW, selectPicsNSFW } from "./selectPics.js";
 import dotenv from 'dotenv';
 import { message } from "telegraf/filters";
 import { textAnswer } from "./answerCommand.js";
-import { respect } from "./respect.js";
+import { ConnectDatabase } from "./mongodb.js";
 
 dotenv.config();
 
@@ -80,6 +80,7 @@ class Bot {
         { source: "img/respect.gif" },
         { caption: `Уважение оказано @${message?.from.username}`}
       )
+      ConnectDatabase()
     } catch {
       (() => {})
     }
