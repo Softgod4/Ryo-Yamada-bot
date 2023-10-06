@@ -1,3 +1,4 @@
 # Телеграмм бот токен нужно скрывать
 .env
 .node_modules/
+node_modules

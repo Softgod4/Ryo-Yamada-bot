@@ -1,0 +1,32 @@
+[debug] [2023-10-06T15:05:05.842Z] ----------------------------------------------------------------------
+[debug] [2023-10-06T15:05:05.845Z] Command:       B:\Programm\Node\node.exe C:\Users\softg\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js login
+[debug] [2023-10-06T15:05:05.846Z] CLI Version:   12.6.1
+[debug] [2023-10-06T15:05:05.846Z] Platform:      win32
+[debug] [2023-10-06T15:05:05.846Z] Node Version:  v20.5.1
+[debug] [2023-10-06T15:05:05.846Z] Time:          Fri Oct 06 2023 18:05:05 GMT+0300 (Москва, стандартное время)
+[debug] [2023-10-06T15:05:05.846Z] ----------------------------------------------------------------------
+[debug] 
+[info] i  Firebase optionally collects CLI and Emulator Suite usage and error reporting information to help improve our products. Data is collected in accordance with Google's privacy policy (https://policies.google.com/privacy) and is not used to identify you.
+ 
+[info] i  To change your data collection preference at any time, run `firebase logout` and log in again. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=59512855&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+[info] 
+[info] Waiting for authentication...
+[debug] [2023-10-06T15:07:40.812Z] ----------------------------------------------------------------------
+[debug] [2023-10-06T15:07:40.815Z] Command:       B:\Programm\Node\node.exe C:\Users\softg\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js login
+[debug] [2023-10-06T15:07:40.815Z] CLI Version:   12.6.1
+[debug] [2023-10-06T15:07:40.816Z] Platform:      win32
+[debug] [2023-10-06T15:07:40.816Z] Node Version:  v20.5.1
+[debug] [2023-10-06T15:07:40.816Z] Time:          Fri Oct 06 2023 18:07:40 GMT+0300 (Москва, стандартное время)
+[debug] [2023-10-06T15:07:40.816Z] ----------------------------------------------------------------------
+[debug] 
+[info] i  Firebase optionally collects CLI and Emulator Suite usage and error reporting information to help improve our products. Data is collected in accordance with Google's privacy policy (https://policies.google.com/privacy) and is not used to identify you.
+ 
+[info] i  To change your data collection preference at any time, run `firebase logout` and log in again. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=673362071&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+[info] 
+[info] Waiting for authentication...
