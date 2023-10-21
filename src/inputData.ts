@@ -1,5 +1,3 @@
-import { InputFile } from "telegraf/types";
-
 export const text: {[key: string]: string}= {
     help: 'Привет привет! Если у тебя возникли проблемы с ботом, вы всегда можете попросить помощи у @Softgod\n\n Не забудь поставить звезду на Гитхабе! https://github.com/Softgod4/Ryo-Yamada-bot',
 };

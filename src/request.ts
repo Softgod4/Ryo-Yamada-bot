@@ -1,5 +1,3 @@
-import { promises } from "dns";
-import { METHODS } from "http";
 import fetch from "node-fetch";
 
 export async function getPicture(category: string, sfw: boolean): Promise<any> {
