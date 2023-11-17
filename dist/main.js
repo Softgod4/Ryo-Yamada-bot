@@ -16,81 +16,54 @@ import dotenv from 'dotenv';
 import { message } from "telegraf/filters";
 import { textAnswer } from "./answerCommand.js";
 dotenv.config();
-class Bot {
-    constructor() {
-        this.bot = new Telegraf(process.env.BOT_TOKEN);
-        this.setCommands();
-        this.setHandlers();
+const bot = new Telegraf(process.env.BOT_TOKEN);
+setBotCommands(bot);
+bot.command('help', (ctx) => __awaiter(void 0, void 0, void 0, function* () {
+    yield ctx.replyWithPhoto({ source: 'img/boshi+mrbeast.jpg' }, { caption: text.help });
+}));
+bot.command('sfw', (ctx) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield getPicture(selectPicsSFW(), true);
+        const picture = data.url;
+        yield ctx.replyWithPhoto({ url: picture });
     }
-    setCommands() {
-        setBotCommands(this.bot);
+    catch (error) {
+        if (typeof error === 'string') {
+            ctx.sendMessage(error);
+        }
     }
-    setHandlers() {
-        this.bot.command('help', this.handleHelpCommand.bind(this));
-        this.bot.command('sfw', this.handleSFWCommand.bind(this));
-        this.bot.command('nsfw', this.handleNSFWCommand.bind(this));
-        this.bot.on(message('sticker'), this.handleAnswerCommand.bind(this));
-        this.bot.hears('+', this.handleRespectCommand.bind(this));
+}));
+bot.command('nsfw', (ctx) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield getPicture(selectPicsNSFW(), false);
+        const picture = data.url;
+        yield ctx.replyWithPhoto({ url: picture });
     }
-    handleHelpCommand(ctx) {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield ctx.replyWithPhoto({ source: 'img/boshi+mrbeast.jpg' }, { caption: text.help });
-        });
+    catch (error) {
+        if (typeof error === 'string') {
+            ctx.sendMessage(error);
+        }
     }
-    handleSFWCommand(ctx) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const data = yield getPicture(selectPicsSFW(), true);
-                const picture = data.url;
-                yield ctx.replyWithPhoto({ url: picture });
-            }
-            catch (error) {
-                if (typeof error === 'string') {
-                    ctx.sendMessage(error);
-                }
-            }
-        });
+}));
+bot.on(message('sticker'), (ctx) => {
+    try {
+        if (Math.random() > 0.7) {
+            ctx.replyWithVideo({ source: 'img/like.gif' }, { caption: textAnswer() });
+        }
     }
-    handleNSFWCommand(ctx) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const data = yield getPicture(selectPicsNSFW(), false);
-                const picture = data.url;
-                yield ctx.replyWithPhoto({ url: picture });
-            }
-            catch (error) {
-                if (typeof error === 'string') {
-                    ctx.sendMessage(error);
-                }
-            }
-        });
+    catch (err) {
+        console.log(err);
     }
-    handleAnswerCommand(ctx) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                (Math.random() > 0.7) ? yield ctx.replyWithVideo({ source: 'img/like.gif' }, { caption: textAnswer() }) : (() => { });
-            }
-            catch (err) {
-                console.log(err);
-            }
-        });
+});
+bot.hears('+', (ctx) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let message = ctx.message;
+        ctx.replyWithVideo({ source: "img/respect.gif" }, { caption: `Уважение оказано @${message === null || message === void 0 ? void 0 : message.from.username}` });
     }
-    handleRespectCommand(ctx) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                let message = ctx.message;
-                ctx.replyWithVideo({ source: "img/respect.gif" }, { caption: `Уважение оказано @${message === null || message === void 0 ? void 0 : message.from.username}` });
-            }
-            catch (_a) {
-                (() => { });
-            }
-        });
+    catch (_a) {
+        (() => { });
     }
-    launch() {
-        this.bot.launch();
-        process.once('SIGINT', () => this.bot.stop('SIGINT'));
-        process.once('SIGTERM', () => this.bot.stop('SIGTERM'));
-    }
-}
-const bot = new Bot();
+}));
 bot.launch();
+process.once('SIGINT', () => bot.stop('SIGINT'));
+process.once('SIGTERM', () => bot.stop('SIGTERM'));
