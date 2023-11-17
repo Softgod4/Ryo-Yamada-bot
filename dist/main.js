@@ -15,7 +15,6 @@ import { selectPicsSFW, selectPicsNSFW } from "./selectPics.js";
 import dotenv from 'dotenv';
 import { message } from "telegraf/filters";
 import { textAnswer } from "./answerCommand.js";
-import { ConnectDatabase } from "./mongodb.js";
 dotenv.config();
 class Bot {
     constructor() {
@@ -94,5 +93,4 @@ class Bot {
     }
 }
 const bot = new Bot();
-ConnectDatabase();
 bot.launch();
